@@ -1,9 +1,10 @@
-import Vec from './classes/Vec';
+import Pong from './classes/Pong';
 
-let vec = new Vec(1, 2);
+const canvas = document.getElementById('pong') as HTMLCanvasElement;
+const pong = new Pong(canvas);
 
-console.log(vec.len);
+canvas.addEventListener('mousemove', event => {
+    pong.players[0].pos.y = event.offsetY - pong.players[0].size.y / 2;
+});
 
-vec.len = 42;
-
-console.log(vec.len);
+canvas.addEventListener('click', () => pong.start());
